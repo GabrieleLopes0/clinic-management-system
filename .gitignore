@@ -48,6 +48,9 @@ CodeCoverage/
 frontend/node_modules/
 frontend/dist/
 
+# HTTP request files
+*.http
+
 # MSBuild Binary and Structured Log
 *.binlog
 
