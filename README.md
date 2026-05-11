@@ -1,53 +1,77 @@
 # Clinic Management System
 
-Aplicação backend para gestão de agendamentos de consultas em clínica fictícia.
+Sistema para gestão de agendamentos de consultas em clínica médica. Permite cadastrar pacientes, profissionais e agendar consultas com regras de negócio específicas.
 
 ## Tecnologias
 
-- ASP.NET Core 10
-- Dapper
-- JWT Authentication
-- PostgreSQL
-- Swagger
-- Serilog
-- xUnit
-- Docker
+- **Back-end**: C# com .NET 10 (Web API) e Dapper com PostgreSQL
+- **Front-end**: React com Vite
+- **Banco**: PostgreSQL em Docker
+- **Autenticação**: JWT
+- **Documentação**: Swagger
+- **Logs**: Serilog
+- **Testes**: xUnit
 
-## O que foi feito
+## Como rodar
 
-- Backend consolidado em um único projeto `Clinic.Api`
-- CRUD de pacientes
-- CRUD de profissionais
-- Agendamento de consultas com regras de negócio:
-  - paciente só pode ter 1 consulta por profissional por dia
-  - profissional não pode atender duas consultas no mesmo horário
-  - horário de atendimento de 08:00 a 18:00, segunda a sexta
-  - consultas de 30 minutos
-- Autenticação JWT
-- Swagger para documentação
-- Logs gravados em arquivo com Serilog
-- Testes unitários para validação das regras de agendamento
-- Docker para API e PostgreSQL
+### Pré-requisitos
+- Docker Desktop
 
-## Como rodar localmente
+### Instalação
+1. Clone o repositório:
+```bash
+git clone <https://github.com/GabrieleLopes0/clinic-management-system.git>
+cd clinic-management-system
+```
 
-1. Instale Docker Desktop.
-2. Execute no diretório do projeto:
-
+### Executando com Docker
+Na raiz do projeto, execute:
+```bash
+npm run start
+```
+Ou diretamente:
 ```bash
 docker compose up --build
 ```
 
-3. A API ficará disponível em:
+Depois acesse:
+- **Frontend**: http://localhost:5173
+- **API (Swagger)**: http://localhost:5000/swagger
 
-- `http://localhost:5000`
-- `http://localhost:5000/swagger/index.html`
+### Desenvolvimento local (opcional)
+Se preferir desenvolver sem Docker:
 
-## Como rodar o frontend
-
-1. Abra outro terminal e navegue até a pasta `frontend`:
-
+1. Instale PostgreSQL localmente
+2. Configure a connection string em `Clinic.Api/appsettings.Development.json`
+3. Execute o backend:
 ```bash
+cd Clinic.Api
+dotnet run
+```
+4. Execute o frontend:
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+## Funcionalidades
+
+- ✅ CRUD de pacientes
+- ✅ CRUD de profissionais
+- ✅ Agendamento de consultas com validações:
+  - Paciente não pode ter 2 consultas no mesmo dia com o mesmo profissional
+  - Profissional não pode atender 2 consultas simultâneas
+  - Horário comercial: 08:00 às 18:00, segunda a sexta
+  - Consultas de 30 minutos
+- ✅ Autenticação JWT
+- ✅ Documentação Swagger
+- ✅ Logs em arquivo
+- ✅ Testes unitários
+
+## Usuário de teste
+- **Email**: admin@clinic.com
+- **Senha**: 123456
 cd frontend
 ```
 

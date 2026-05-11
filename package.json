@@ -1,0 +1,11 @@
+{
+  "name": "clinic-management-system",
+  "version": "1.0.0",
+  "description": "Sistema de gestão de clínica médica",
+  "scripts": {
+    "start": "docker compose up --build",
+    "dev": "docker compose up",
+    "stop": "docker compose down",
+    "build": "docker compose build"
+  }
+}
